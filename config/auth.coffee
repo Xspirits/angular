@@ -6,8 +6,8 @@ module.exports =
     email_confirm: true
     twitterPushNews: true
   cyf :
-    app_domain: "http://www.cyf-app.co"
-    # domain: "http://localhost:8080"
+    # app_domain: "http://www.cyf-app.co"
+    domain: "http://localhost:8080"
   mandrill_key: "w_F27RXK5GmLNtZoePLczA"
   support :
     email: "cyf.app@gmail.com"
