@@ -11,7 +11,7 @@ angular.module('caf.directives', []).
   }])
   .directive('menuLeft', function () {
     return {
-      templateUrl: 'partials/menuleft.html',
+      templateUrl: 'views/partials/menuleft.html',
       restrict: 'AE',
       controller: 'MenuLeftCtrl'
     };
