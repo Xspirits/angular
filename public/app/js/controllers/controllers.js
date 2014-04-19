@@ -9,17 +9,31 @@ angular.module('caf.controllers', [])
   .controller('leaderboardCtrl', ['$scope', function($scope) {
     $scope.test = 'leaderboardCtrl';
   }])
-  .controller('users', ['$scope', '$routeParams', 'Users', function($scope, $routeParams, Users) {
+  .controller('users', ['$scope', '$routeParams', '$angularCacheFactory','Users', function($scope, $routeParams, $angularCacheFactory, Users) {
 
     var userId = $routeParams.userId ? $routeParams.userId : false;
     console.log(userId)
+
     if(!userId)
       $scope.users = Users.query();
     else{
-      var userInfos = Users.get({userId: userId});
-      $scope.user = userInfos;
+      $angularCacheFactory.info();
 
-        console.log(userInfos);
+      var usersCache = $angularCacheFactory.get('usersCache');
+      console.log(usersCache);
+      var userProfileCached = usersCache.get('/users/'+userId);
+
+      console.log(userProfileCached);
+      if(!userProfileCached) {
+        var userInfos = Users.get({userId: userId});
+        
+        usersCache.put('/users/'+userId, userInfos);
+        $scope.user = userInfos;
+
+      } else {
+        $scope.user = userProfileCached;        
+      }
+
     }
   }])
   .controller('MenuLeftCtrl', function($location, $scope) {
