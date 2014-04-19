@@ -360,6 +360,18 @@
         });
       });
     });
+    app.get("/app/users", function(req, res) {
+      return users.getUserList(function(returned) {
+        console.log(returned);
+        return res.send(returned);
+      });
+    });
+    app.get("/app/users/:id", function(req, res) {
+      return users.getUser(req.params.id, function(returned) {
+        console.log(returned);
+        return res.send(returned);
+      });
+    });
     app.get("/search_game", function(req, res) {
       var lookFor;
       lookFor = req.query["term"];

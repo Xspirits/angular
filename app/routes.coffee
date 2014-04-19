@@ -351,6 +351,25 @@ module.exports = (app, mailer, _, sio, passport, genUID, xp, notifs, moment, cha
   # AJAX CALLS ==================================================================
   # =============================================================================
 
+  # ============
+  # ANGULAR SPECIFICS
+  # ============
+
+
+  app.get "/app/users", (req, res) ->
+    users.getUserList (returned) ->
+      console.log returned
+      res.send returned
+
+  app.get "/app/users/:id", (req, res) ->
+    users.getUser req.params.id, (returned) ->
+      console.log returned
+      res.send returned
+
+  # ============
+  # END ANGULAR SPECIFICS
+  # ============
+
   # Game autocomplete research
   app.get "/search_game", (req, res) ->
     lookFor = req.query["term"]

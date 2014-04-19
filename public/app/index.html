@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/app.css">
     <!-- for CSS Transitions and/or Keyframe Animations -->
     <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="../css/bootflat.min.css">
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
     <title>Challenge your Friends</title>
 </head>
@@ -20,7 +21,7 @@
         <div id="app-nav" class="scroller" menu-left></div>
         <div id="app-body">
             <div class="scroller">
-                <div class="container" ng-view></div>
+                <div class="container view-frame" ng-view></div>
             </div>
             <div id="nav-button" onclick="document.getElementById('app-slider').classList.toggle('slider-active')">
                 <i class="fa fa-bars fa-2x"></i>
@@ -36,12 +37,14 @@
   <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/angular-route/angular-route.js"></script>
   <script src="../bower_components/angular-animate/angular-animate.js"></script>
-  <script src="../bower_components/angular-touch/angular-touch.js"></script>
+  <script src="../bower_components/angular-resource/angular-resource.js"></script>
   <script src="../bower_components/angular-touch/angular-touch.js"></script>
 
   <script src="js/app.js"></script>
   <script src="js/services/services.js"></script>
+  <script src="js/services/users.js"></script>
   <script src="js/controllers/controllers.js"></script>
+  <script src="js/animations/animations.js"></script>
   <script src="js/filters/filters.js"></script>
   <script src="js/directives/directives.js"></script>
 </body>
