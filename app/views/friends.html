@@ -3,6 +3,6 @@
         Search: <input ng-model="query">
 <ul>
   <li ng-repeat="friend in currentUser.friends | filter:query">
-  <a ng-href="#/{{friend.idCool}}">{{friend.username}}</a>
+  <a ng-href="#/users/{{friend.idUser.idCool}}">{{friend.idUser.local.pseudo}}</a>
   </li>
 </ul>

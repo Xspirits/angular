@@ -4,6 +4,12 @@
 angular.module('users.controllers', [])
   .controller('usersCtrl', ['$scope', '$routeParams', '$angularCacheFactory','Users', function($scope, $routeParams, $angularCacheFactory, Users) {
 
+    function updateUser(id){
+      var userInfos = Users.get({userId: userId});
+      usersCache.put('/users/'+userId, userInfos);
+      console.log(userInfos);
+      return userInfos;
+    }
     var userId = $routeParams.userId ? $routeParams.userId : false;
 
     // Is it a profile or the list of our users ?
@@ -14,15 +20,13 @@ angular.module('users.controllers', [])
       var usersCache = $angularCacheFactory.get('usersCache');
       var userProfileCached = usersCache.get('/users/'+userId);
 
-      if(!userProfileCached) {
-
-        var userInfos = Users.get({userId: userId});
-        
-        usersCache.put('/users/'+userId, userInfos);
-        $scope.user = userInfos;
+      if(!userProfileCached || !userProfileCached.idUser) {
+        console.log('load from api')
+        $scope.user = updateUser(userId);
 
       } else {
         console.log('load from cache')
+        console.log(userProfileCached);
         $scope.user = userProfileCached;        
       }
 

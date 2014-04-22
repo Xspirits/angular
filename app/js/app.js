@@ -32,7 +32,8 @@ angular.module('caf', [
     'monospaced.elastic'
   ])
   .constant('conf', {
-    'epApi': 'http://localhost:8080/'
+    'epApiDev': 'http://localhost:8080/',
+    'epApi': 'http://www.cyf-app.co/',
   })
   .config(function($angularCacheFactoryProvider, $routeProvider) {
 
