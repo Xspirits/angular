@@ -1,0 +1,8 @@
+<h1>Friends</h1>
+
+        Search: <input ng-model="query">
+<ul>
+  <li ng-repeat="friend in currentUser.friends | filter:query">
+  <a ng-href="#/{{friend.idCool}}">{{friend.username}}</a>
+  </li>
+</ul>

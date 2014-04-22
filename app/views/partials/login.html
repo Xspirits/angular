@@ -1,0 +1,33 @@
+<div class="modal-header">
+  <h4>Welcome to Challenge your Friends <br/><small>A place to find back your joy as a gamer!</small></h4>
+</div>
+<!-- Blocking touchend due to angular-touch issue https://github.com/angular/angular.js/issues/6432 -->
+<div class="modal-body" stop-event="touchend">
+  <tabset>
+
+    <tab heading="Join Us" select="tabSelect(0)">
+      <form name="form.register" novalidate ng-submit="ok()">
+        <input class="form-control" type="text" name="username" ng-model="form.register.username" placeholder="Username" ng-minlength="3" required /><br/>
+        <input class="form-control" type="email" name="email" ng-model="form.register.email" placeholder="Email Address" required /><br/>
+        <input class="form-control" type="password" name="password" ng-model="form.register.pass" ng-minlength="3" placeholder="Password" required /><br/>
+        <input class="form-control" type="number" name="age" ng-model="form.register.age" min="13" placeholder="Your Age" required />
+      </form>
+    </tab>
+
+    <tab heading="Sign In" select="tabSelect(1)">
+      <form name="form.login" novalidate ng-submit="ok()">
+        <input class="form-control" type="email" name="email" ng-model="form.login.email" placeholder="Email Address" required /><br/>
+        <input class="form-control" type="password" name="pass" ng-model="form.login.pass" ng-minlength="3" placeholder="Password" required />
+      </form>
+    </tab>
+
+  </tabset>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-default btn-default-border" ng-click="cancel()"><i class="fa fa-times"></i> Cancel</button>
+  <button class="btn btn-success-alt" ng-show="tabIndex === 0" ng-click="ok()"><i class="fa fa-check"></i> Join Now</button>
+  <button class="btn btn-success-alt" ng-show="tabIndex === 1" ng-click="ok()"><i class="fa fa-check"></i> Sign In</button>
+</div>
+
+<spinner ng-show="state.progress"></spinner>
