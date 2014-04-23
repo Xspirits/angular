@@ -1,7 +1,10 @@
 {
   "name": "caf",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "morgan": "^1.0.0",
+    "compression": "^1.0.1"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-autoprefixer": "~0.4.0",
