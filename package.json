@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "dependencies": {
     "morgan": "^1.0.0",
-    "compression": "^1.0.1"
+    "compression": "^1.0.1",
+    "express": "^4.0.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
