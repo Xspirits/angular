@@ -50,7 +50,10 @@ angular.module('login.controllers', [])
 
         apiService.Auth.get({'email':$scope.form.login.email, 'pass':$scope.form.login.pass}, function(data) {
             console.log(data);
-            onLoginSuccess(data);
+            if(data.passed === true)
+              onLoginSuccess(data);
+            else
+              onLoginError(data[1]);
           }, function(res) {
             onLoginError(res);
           }
@@ -60,7 +63,7 @@ angular.module('login.controllers', [])
 
     function onLoginSuccess(loginData) {
       // Let's double check to make sure we got a session key in the response.
-      if (loginData.user.sessionKey) {
+      if (loginData.user && loginData.user.sessionKey) {
         $http.defaults.headers.common['X-cyf-AuthToken'] = loginData.user.sessionKey;
          try {
             $localStorage.profile = loginData.user;
