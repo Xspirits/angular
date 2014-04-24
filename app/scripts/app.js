@@ -5,12 +5,14 @@
 angular.module('caf', [
     /* ANG RESSOURCES */
     'ngRoute',
+    'ngResource',
     'ngAnimate',
     'ngStorage',
     'ngTouch',
     'ngSanitize',
-    'ngTable',
     'jmdobry.angular-cache', 
+    'ui.bootstrap',
+    'monospaced.elastic',
 
     /* FILTERS */
     'caf.filters',
@@ -29,9 +31,7 @@ angular.module('caf', [
     'login.controllers',
     'users.controllers',
     'ladders.controllers',
-    'caf.animations',
-    'ui.bootstrap',
-    'monospaced.elastic'
+    'caf.animations'
   ])
   .constant('conf', {
     'epApiDev': 'http://localhost:8080/',

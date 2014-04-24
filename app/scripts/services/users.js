@@ -1,8 +1,6 @@
 'use strict';
 
-var usersServices = angular.module('users.services', ['ngResource']);
- 
-usersServices
+angular.module('users.services', [])
   .factory('Users', ['conf','$resource',
   function(conf,$resource){
     return $resource(conf.epApi + 'app/users/:userId', {}, {

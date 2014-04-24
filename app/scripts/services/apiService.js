@@ -1,8 +1,6 @@
 'use strict';
 
-var apiServices = angular.module('api.services', ['ngResource']);
- 
-apiServices
+angular.module('api.services', [])
   .factory('apiService', ['conf', '$resource', function apiService(conf, $resource) {
     return {
       Auth: $resource(conf.epApi + 'auth/:email/:pass', {}, {

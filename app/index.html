@@ -5,11 +5,10 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/bootflat/2.0.0/css/bootflat.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
     <!-- for CSS Transitions and/or Keyframe Animations -->
     <link rel="stylesheet" href="styles/animations.css">
-    <link rel="stylesheet" href="bower_components/ng-table/ng-table.css">
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="./styles/app.css">
+    <link rel="stylesheet" href="styles/app.css">
     <title>Challenge your Friends</title>
   </head>
   <body ng-app="cafApp">
@@ -36,17 +35,6 @@
       </div>
     </div>  
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
-
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
@@ -54,6 +42,7 @@
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
@@ -65,17 +54,15 @@
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-elastic/elastic.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/ng-table/ng-table.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/services/services.js"></script>
     <script src="scripts/services/users.js"></script>
     <script src="scripts/services/ladders.js"></script>
     <script src="scripts/services/apiService.js"></script>
-    <!-- Controllers -->
     <script src="scripts/controllers/controllers.js"></script>
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/controllers/users.js"></script>
@@ -83,6 +70,6 @@
     <script src="scripts/animations/animations.js"></script>
     <script src="scripts/filters/filters.js"></script>
     <script src="scripts/directives/directives.js"></script>
-        <!-- endbuild -->
+    <!-- endbuild -->
 </body>
 </html>

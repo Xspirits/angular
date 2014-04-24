@@ -9,8 +9,8 @@ angular.module('caf.controllers', [])
   var profileCache = $angularCacheFactory.get('profileCache');
 
   }])
-  .controller('MenuLeftCtrl', function($location, $localStorage, $modal, $scope) {
-      $scope.currentUser = $localStorage.profile ? $localStorage.profile : false;
-      $scope.location = $location;
-      $scope.modal = $modal;
-  });
+  .controller('MenuLeftCtrl', ['$location', '$localStorage', '$modal', '$scope', function($location, $localStorage, $modal, $scope) {
+        $scope.currentUser = $localStorage.profile ? $localStorage.profile : false;
+        $scope.location = $location;
+        $scope.modal = $modal;
+    }]);

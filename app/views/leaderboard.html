@@ -14,14 +14,22 @@
     <a ng-href="#/leaderboard/monthly" class="btn btn-default btn-block">Monthly ladder</a>
   </div>
 </div>
-<table ng-table="tableParams" class="table">
-  <tr ng-repeat="user in $data" class="text-center">
-    <td data-title="'Rank'">{{$index+1}}</td>
-    <td data-title="'Pseudo'" class="text-left">
+<table>
+<thead>
+  <tt>
+    <th>Rank</th>
+    <th>Challenger</th>
+    <th>Level</th>
+    <th>Score</th>
+  </tt>
+</thead>
+  <tr ng-repeat="user in ladder" class="text-center">
+    <td>{{$index+1}}</td>
+    <td class="text-left">
       <img ng-src="{{user.icon}}" class="img-rounded mini-icon">
       <a ng-href="#/users/{{user.idCool}}">{{user.local.pseudo}}</a>
     </td>
-    <td data-title="'Level'">{{user.level}}</td>
-    <td data-title="'Score'">{{user.globalScore}}</td>
+    <td>{{user.level}}</td>
+    <td>{{user.globalScore}}</td>
   </tr>
 </table>

@@ -2,22 +2,22 @@
 
 /* Controllers */
 angular.module('login.controllers', [])
-  .controller('logoutCtrl', function (conf, $rootScope, $scope, $location, $resource, $routeParams, $http, $localStorage) {
-    // Now do the server-side logout. The result isn't critical so pass/fail silently
-    //var Logout = $resource(conf.epApi + 'auth/?');
-    //Logout.delete();
-
-    // Remove the AuthToken that's currently set on the headers
-    delete $http.defaults.headers.common['X-cyf-AuthToken'];
-    delete $localStorage.profile;
-    delete $localStorage.sessionKey;
-    // We're done with everything in $localStorage now, nuke it
-    $localStorage.$reset();
-    $rootScope.currentUser = false;
+  .controller('logoutCtrl', ['conf', '$rootScope', '$scope', '$location', '$resource', '$routeParams', '$http', '$localStorage', function (conf, $rootScope, $scope, $location, $resource, $routeParams, $http, $localStorage) {
+      // Now do the server-side logout. The result isn't critical so pass/fail silently
+      //var Logout = $resource(conf.epApi + 'auth/?');
+      //Logout.delete();
   
-    // Return to the landing page
-    $location.path('/');
-  })
+      // Remove the AuthToken that's currently set on the headers
+      delete $http.defaults.headers.common['X-cyf-AuthToken'];
+      delete $localStorage.profile;
+      delete $localStorage.sessionKey;
+      // We're done with everything in $localStorage now, nuke it
+      $localStorage.$reset();
+      $rootScope.currentUser = false;
+    
+      // Return to the landing page
+      $location.path('/');
+    }])
   .controller('loginCtrl', ['$http', '$location', '$modalInstance', '$localStorage', '$rootScope', '$scope', 'apiService', function ($http, $location, $modalInstance, $localStorage, $rootScope, $scope, apiService) {
     $scope.state = {progress: false};
   
@@ -89,5 +89,4 @@ angular.module('login.controllers', [])
         console.log('other error');
       }
     }
-  
-    }]);
+  }]);

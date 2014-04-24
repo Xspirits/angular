@@ -1,1 +1,1 @@
-<h1>Friends</h1>Search:<input ng-model="query"><ul><li ng-repeat="friend in currentUser.friends | filter:query"><a ng-href="#/users/{{friend.idUser.idCool}}">{{friend.idUser.local.pseudo}}</a></li></ul>
+<h1>Friends</h1><ul><li ng-repeat="friend in currentUser.friends" class="list-unstyled"><img ng-src="{{friend.idUser.icon}}" class="img-rounded mini-icon"> <a ng-href="#/users/{{friend.idUser.idCool}}">{{friend.idUser.local.pseudo}}</a></li></ul>
