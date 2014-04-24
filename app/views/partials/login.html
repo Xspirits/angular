@@ -4,7 +4,6 @@
 <!-- Blocking touchend due to angular-touch issue https://github.com/angular/angular.js/issues/6432 -->
 <div class="modal-body" stop-event="touchend">
   <tabset>
-
     <tab heading="Join Us" select="tabSelect(0)">
       <form name="form.register" novalidate ng-submit="ok()">
         <input class="form-control" type="text" name="username" ng-model="form.register.username" placeholder="Username" ng-minlength="3" required /><br/>

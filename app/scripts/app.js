@@ -9,6 +9,7 @@ angular.module('caf', [
     'ngStorage',
     'ngTouch',
     'ngSanitize',
+    'ngTable',
     'jmdobry.angular-cache', 
 
     /* FILTERS */
@@ -18,6 +19,7 @@ angular.module('caf', [
     'caf.services',
     'api.services',
     'users.services',
+    'ladders.services',
 
     /* DIRECTIVES */
     'caf.directives',
@@ -26,7 +28,7 @@ angular.module('caf', [
     'caf.controllers',
     'login.controllers',
     'users.controllers',
-
+    'ladders.controllers',
     'caf.animations',
     'ui.bootstrap',
     'monospaced.elastic'
@@ -47,7 +49,11 @@ angular.module('caf', [
         templateUrl: 'views/main.html',
         controller: 'mainCtrl'
       })
-      .when('/leaderboard', {
+      .when('/leaderboard/', {
+        templateUrl: 'views/leaderboard.html',
+        controller: 'leaderboardCtrl'
+      })
+      .when('/leaderboard/:type', {
         templateUrl: 'views/leaderboard.html',
         controller: 'leaderboardCtrl'
       })
@@ -137,7 +143,6 @@ angular.module('caf', [
         }
       });
 
-      var usersCache = $angularCacheFactory('usersCache');
       //when the route is changed scroll to the proper element.
       $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
         $location.hash($routeParams.scrollTo);

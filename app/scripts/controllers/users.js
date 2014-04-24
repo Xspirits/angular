@@ -1,30 +1,31 @@
 'use strict';
 
 /* Controllers */
-angular.module('users.controllers', [])
-  .controller('usersCtrl', ['$scope', '$routeParams', '$angularCacheFactory','Users', function($scope, $routeParams, $angularCacheFactory, Users) {
-
-    function updateUser(id,usersCache){
-      var userInfos = Users.get({userId: userId});
-      console.log(userInfos);
-
-      usersCache.put('/users/'+userId, userInfos);
-      console.log(usersCache);
-      return userInfos;
-    }
+angular.module('users.controllers', ['jmdobry.angular-cache'])
+  .controller('usersCtrl', ['$rootScope','$scope', '$routeParams', '$angularCacheFactory','Users', function($rootScope, $scope, $routeParams, $angularCacheFactory, Users) {
     var userId = $routeParams.userId ? $routeParams.userId : false;
 
     // Is it a profile or the list of our users ?
-    if(!userId)
+    if(!userId) {
       $scope.users = Users.query();
+    }
     else{
+      console.log(userId);
+      var uCached = $angularCacheFactory('usersCache');
+      var userProfileCached = uCached.get('/users_'+userId);
 
-      var usersCache = $angularCacheFactory.get('usersCache');
-      var userProfileCached = usersCache.get('/users/'+userId);
-
-      if(!userProfileCached || !userProfileCached.idUser) {
+      if(!userProfileCached || !userProfileCached.idCool) {
         console.log('load from api')
-        $scope.user = updateUser(userId,usersCache);
+        Users.get({userId: userId}, function(userInfos) {
+            console.log(userInfos);
+            uCached.put('/users_'+userInfos.idCool, userInfos);
+
+            console.log(uCached.get('/users_'+userInfos.idCool));
+            $scope.user = userInfos;
+          }, function(res) {
+            console.log(res);
+          }
+        );
 
       } else {
         console.log('load from cache')

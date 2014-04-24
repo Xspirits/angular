@@ -220,7 +220,6 @@ body {
   width: 100%;
   overflow: hidden;
 }
-
 #app-slider {
   position: absolute;
   height: 100%;
@@ -243,9 +242,8 @@ body {
 
 #app-body {
   height: 100%;
-  background-color: rgb(228,227,227);
+  background: rgba(249, 249, 249, 1);
 }
-
 .scroller {
   height: 100%;
   overflow-x: hidden;
@@ -345,6 +343,13 @@ div.menu-head > div.menu-head-auth > span {
   font-size: large;
 }
 
+
+/* --------------------------------- *\
+ * LEADERBOARD
+\* --------------------------------- */
+ .mini-icon {
+  max-width: 18px;
+ }
 
 /* --------------------------------- *\
  * FEED
