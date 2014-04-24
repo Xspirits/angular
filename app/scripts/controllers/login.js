@@ -28,7 +28,7 @@ angular.module('login.controllers', [])
     // Handle modal submit button
     $scope.ok = function () {
       if ($scope.tabIndex === 0) {
-        register();
+        login();
       } else if ($scope.tabIndex === 1) {
         login();
       }
