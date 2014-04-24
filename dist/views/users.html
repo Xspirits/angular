@@ -1,1 +1,1 @@
-<h1>Users</h1><ul><li ng-repeat="user in users"><a ng-href="#/users/{{user.idCool}}">{{user.local.pseudo}}</a></li></ul>
+<h1>Users</h1><ul><li ng-repeat="user in users" class="list-unstyled"><img ng-src="{{user.icon}}" class="img-rounded mini-icon"> <a ng-href="#/users/{{user.idCool}}">{{user.local.pseudo}}</a> <span>Lvl.{{user.level}}</span></li></ul>

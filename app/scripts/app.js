@@ -9,6 +9,7 @@ angular.module('caf', [
     'ngAnimate',
     'ngStorage',
     'ngTouch',
+    'ngTable',
     'ngSanitize',
     'jmdobry.angular-cache', 
     'ui.bootstrap',

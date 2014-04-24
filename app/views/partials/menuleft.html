@@ -25,25 +25,25 @@
     </div>
     <div class='menu-username' >{{currentUser.local.pseudo}}, Lvl. {{currentUser.level}}</div>
   </a>
-  <a ng-href='#/leaderboard'><i class='fa fa-star-o'></i><span>LeaderBoard</span></a>
-  <a ng-href='#/users'><i class='fa fa-users'></i><span>User List</span></a>
+  <a ng-href='#/leaderboard'><i class='fa fa-star-o'></i><span> LeaderBoard</span></a>
+  <a ng-href='#/friends'><i class='fa fa-users'></i><span> Friends</span></a>
+  <a ng-href='#/users'><i class='fa fa-users'></i><span >User List</span></a>
 
-  <a ng-href='#/launchChallenge'><i class='fa fa-crosshairs'></i><span>Launch a Challenge</span></a>
-  <a ng-href='#/ongoing'><i class='fa fa-gamepad'></i><span>My challenges</span></a>
-  <a ng-href='#/request'><i class='fa fa-arrow-right'></i><span>Requests</span>
-    <span class='badge alert-info' ng-show='currentUser.pendingRequests'>{{currentUser.pendingRequests.length}}</span>
+  <a ng-href='#/launchChallenge'><i class='fa fa-crosshairs'></i><span> Launch a Challenge</span></a>
+  <a ng-href='#/ongoing'><i class='fa fa-gamepad'></i><span> My challenges</span></a>
+  <a ng-href='#/request' ng-show='currentUser.pendingRequests.length > 0'><i class='fa fa-arrow-right'></i><span> Requests</span>
+    <span class='badge alert-info' >{{currentUser.pendingRequests.length}}</span>
   </a>
-  <a ng-href='#/challenges'><i class='fa fa-book '></i><span>Challenges list</span></a>
-  <a ng-href='#/myChallenges'><i class='fa fa-file-text'></i><span>Challenges created</span></a>
+  <a ng-href='#/challenges'><i class='fa fa-book '></i><span> Challenges list</span></a>
+  <a ng-href='#/myChallenges'><i class='fa fa-file-text'></i><span> Challenges created</span></a>
 
-  <a ng-href='#/rateChallenges' ng-show='currentUser.challengeRate.length > 0'><i class='fa fa-pencil'></i><span>Rate challenges</span>
-    <span class='badge alert-info' ng-show='currentUser.challengeRate'>{{currentUser.challengeRate.length}}</span>
+  <a ng-href='#/rateChallenges' ng-show='currentUser.challengeRate.length > 0'><i class='fa fa-pencil'></i><span> Rate challenges</span>
+    <span class='badge alert-info'>{{currentUser.challengeRate.length}}</span>
   </a>
-  <a ng-href='#/tribunal' ng-show='currentUser.tribunal.length > 0'><i class='fa fa-gavel'></i><span>tribunal</span>
-    <span class='badge alert-info' ng-show='currentUser.tribunal'>{{currentUser.tribunal.length}}</span>
+  <a ng-href='#/tribunal' ng-show='currentUser.tribunal.length > 0'><i class='fa fa-gavel'></i><span> tribunal</span>
+    <span class='badge alert-info'>{{currentUser.tribunal.length}}</span>
   </a>
   <span class='menu-mini-toolbar'>
-    <a ng-href='#/friends'><span>Friends</span></a>
     <a ng-href='#/settings'><span class='fa fa fa-cogs'></span> Settings</a>
   </span>
   <a ng-href='#/logout'>log out</span></a>
