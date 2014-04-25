@@ -12,15 +12,15 @@ angular.module('users.controllers', ['jmdobry.angular-cache'])
     else{
       console.log(userId);
       var uCached = $angularCacheFactory('usersCache');
-      var userProfileCached = uCached.get('/users_'+userId);
+      var userProfileCached = uCached.get('users_'+userId);
 
       if(!userProfileCached || !userProfileCached.idCool) {
         console.log('load from api')
         Users.get({userId: userId}, function(userInfos) {
             console.log(userInfos);
-            uCached.put('/users_'+userInfos.idCool, userInfos);
+            uCached.put('users_'+userInfos.idCool, userInfos);
 
-            console.log(uCached.get('/users_'+userInfos.idCool));
+            console.log(uCached.get('users_'+userInfos.idCool));
             $scope.user = userInfos;
           }, function(res) {
             console.log(res);

@@ -22,6 +22,7 @@
 
 body {
   font-weight: 300;
+  font-size: 1.3em;
   color: #555;
 }
 
@@ -250,7 +251,9 @@ body {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
-
+.scroller > .container:first-child {
+  margin-top: 44px;
+}
 #app-body > div[ng-view] {
   height: 1px;
   min-height: 100%;
@@ -261,13 +264,17 @@ body {
   top: 0;
   left: 0;
   height: 44px;
-  width: 44px;
+  width: 100%;
   z-index: 10;
-  text-align: center;
+  text-align: left;
+  padding-left: 30px;
+  background: #2CAACC;
+  color: white;
 }
 
 #nav-button .fa-bars {
-  color: #1293d4;
+  cursor: pointer;
+  color: #fff;
   line-height: 44px;
 }
 
@@ -304,7 +311,7 @@ div.menu-head {
   height: 44px;
   width: 100%;
   text-align: center;
-  background-color: #1293d4;
+  background-color: #2CAACC;
 }
 
 .menu-head-logo {

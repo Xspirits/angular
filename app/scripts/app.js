@@ -144,6 +144,7 @@ angular.module('caf', [
         }
       });
 
+      $rootScope.cacheLadders = $angularCacheFactory('leaderboardCache');
       //when the route is changed scroll to the proper element.
       $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
         $location.hash($routeParams.scrollTo);
