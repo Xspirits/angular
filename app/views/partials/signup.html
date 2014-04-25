@@ -1,0 +1,19 @@
+<div class="modal-header">
+  <h4>Welcome to Challenge your Friends <br/><small>A place to find back your joy as a gamer!</small></h4>
+</div>
+<!-- Blocking touchend due to angular-touch issue https://github.com/angular/angular.js/issues/6432 stop-event="touchend" -->
+<div class="modal-body" >
+  <br>
+  <form name="form.register" novalidate ng-submit="signup()">
+    <input class="form-control" type="text" name="username" ng-model="form.register.username" placeholder="Username" ng-minlength="3" required /><br/>
+    <input class="form-control" type="email" name="email" ng-model="form.register.email" placeholder="Email Address" required /><br/>
+    <input class="form-control" type="password" name="password" ng-model="form.register.pass" ng-minlength="4" placeholder="Password" required /><br/>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-default btn-default-border" ng-click="cancel()"><i class="fa fa-times"></i> Cancel</button>
+  <button class="btn btn-success-alt" ng-click="signup()"><i class="fa fa-check"></i> Join Now</button>
+</div>
+
+<spinner ng-show="state.progress"></spinner>

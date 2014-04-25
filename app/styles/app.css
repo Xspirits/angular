@@ -22,7 +22,7 @@
 
 body {
   font-weight: 300;
-  font-size: 1.3em;
+  font-size: 1.5em;
   color: #555;
 }
 
@@ -254,11 +254,25 @@ body {
 .scroller > .container:first-child {
   margin-top: 44px;
 }
+#app-body > div.scroller > div.container > div.row > div {
+  margin-top: 1.5em;
+}
 #app-body > div[ng-view] {
   height: 1px;
   min-height: 100%;
 }
-
+#app-body #page-title {
+  position: fixed;
+  top: 0;
+  left: 80px;
+  line-height: 44px;
+  height: 44px;
+  font-size: 1.8em;
+  width: 100%;
+  font-weight: bold;
+  z-index: 11;
+  color: rgb(255, 255, 255);
+}
 #app-body > #nav-button {
   position: absolute;
   top: 0;
@@ -278,6 +292,13 @@ body {
   line-height: 44px;
 }
 
+/* --------------------------------- *\
+ * HEADERS
+\* --------------------------------- */
+.container h1 {
+  text-align: center;
+  color: rgb(98, 105, 111);
+}
 /* --------------------------------- *\
  * MENU
 \* --------------------------------- */
@@ -350,13 +371,31 @@ div.menu-head > div.menu-head-auth > span {
   font-size: large;
 }
 
-
+/* --------------------------------- *\
+ * FONT AWESOME TRICKS
+\* --------------------------------- */
+.fa-3 {
+  font-size: 7em;
+}
 /* --------------------------------- *\
  * LEADERBOARD
 \* --------------------------------- */
  .mini-icon {
   max-width: 18px;
  }
+
+/* --------------------------------- *\
+ * FRIENDS
+\* --------------------------------- */
+.new-friend-card > .thumbnail {
+  background: rgb(165, 161, 161);
+  border: 1px solid rgb(250, 248, 248);
+}
+.new-friend-card > .thumbnail h1 > a > .fa-3 {
+  color: rgb(249, 249, 249) !important;
+  text-shadow: 0 1px rgb(111, 111, 111);
+  margin: 65px auto;
+}
 
 /* --------------------------------- *\
  * FEED

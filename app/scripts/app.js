@@ -140,11 +140,12 @@ angular.module('caf', [
         document.getElementById('app-slider').classList.remove('slider-active');
         if (next.authRequired === true && !$localStorage.sessionKey) {
           console.log('This route requires authentication');
-          $location.path('/login');
+          $location.path('/');
         }
       });
 
       $rootScope.cacheLadders = $angularCacheFactory('leaderboardCache');
+      $rootScope.cacheUsers = $angularCacheFactory('usersCache');
       //when the route is changed scroll to the proper element.
       $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
         $location.hash($routeParams.scrollTo);

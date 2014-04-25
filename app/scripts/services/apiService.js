@@ -5,6 +5,9 @@ angular.module('api.services', [])
     return {
       Auth: $resource(conf.epApi + 'auth/:email/:pass', {}, {
         query: {method:'GET', dataType :'json', params: {email: false,pass: false}}
+      }),
+      Signup: $resource(conf.epApiDev + 'api/register/:username/:email/:pass', {}, {
+        post: {method:'POST', dataType :'json', params: {username: '@username', email: '@email',pass: '@pass'}}
       })
     };
   }]);

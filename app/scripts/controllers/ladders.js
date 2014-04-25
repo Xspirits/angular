@@ -3,15 +3,18 @@
 /* Controllers */
 angular.module('ladders.controllers', [])
   .controller('leaderboardCtrl', ['$scope','$rootScope', '$routeParams', '$angularCacheFactory', 'Ladders', 'ngTableParams', function($scope, $rootScope, $routeParams, $angularCacheFactory, Ladders, ngTableParams) {
+
     var callType = $routeParams.type ? $routeParams.type : false;
 
     var ladderCache =  $rootScope.cacheLadders;
     var ladderGlobal = ladderCache.get('ladderGlobal')
       , ladderTyped = ladderCache.get('ladder' + callType);
-    
+
+
     // Scopes
     $scope.type = callType ? callType : 'global';
-
+    $scope.pageTitle = callType ? callType + ' ladder' : 'Global leaderboard';
+    
     if(callType === false) {
 
       if(ladderGlobal && ladderGlobal.length > 0) {
@@ -52,8 +55,6 @@ angular.module('ladders.controllers', [])
         });
       }
     }
-
-
 
     /* FUNCTIONS */
     function setScopeTable (tableData) {

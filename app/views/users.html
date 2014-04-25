@@ -1,9 +1,20 @@
-<h1>Users</h1>
+<div id="page-title">{{pageTitle}}</div>
 
-<ul>
-    <li ng-repeat="user in users" class="list-unstyled">
-      <img ng-src="{{user.icon}}" class="img-rounded mini-icon">
-      <a ng-href="#/users/{{user.idCool}}">{{user.local.pseudo}}</a>
-      <span>Lvl.{{user.level}}</span>
-    </li>
-</ul>
+  <div class="col-sm-4 col-xs-4 col-lg-3 col-md-3 repeated-item" ng-repeat="user in users">
+    <div class="thumbnail">
+      <a ng-href="#/users/{{user.idCool}}" title="See profile">
+        <img class="img-rounded" ng-src="{{user.icon}}">
+      </a>
+      <div class="caption text-center">
+        <h3>{{user.local.pseudo}}</h3>
+        <p>
+          Level: <strong>{{user.level}}</strong>
+        </p>
+
+        <div class="btn-group">
+          <a ng-href="#/users/{{user.idCool}}" class="btn btn-default" title="See profile"><i class="fa fa-user"></i></a>
+          <a ng-href="#/addfriend/{{user.idCool}}" class="btn btn-default" title="Send a friend request"><i class="fa fa-plus"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>

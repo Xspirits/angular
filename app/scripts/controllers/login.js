@@ -18,7 +18,7 @@ angular.module('login.controllers', [])
       // Return to the landing page
       $location.path('/');
     }])
-  .controller('loginCtrl', ['$http', '$location', '$modalInstance', '$localStorage', '$rootScope', '$scope', 'apiService', function ($http, $location, $modalInstance, $localStorage, $rootScope, $scope, apiService) {
+  .controller('loginCtrl', ['$http', '$location', '$modal', '$modalInstance', '$localStorage', '$rootScope', '$scope', 'apiService', function ($http, $location, $modal, $modalInstance, $localStorage, $rootScope, $scope, apiService) {
     $scope.state = {progress: false};
   
     // Define the form object in the controller so that it can be prototypically inhereted into the
@@ -26,23 +26,7 @@ angular.module('login.controllers', [])
     $scope.form = {};
   
     // Handle modal submit button
-    $scope.ok = function () {
-      if ($scope.tabIndex === 0) {
-        login();
-      } else if ($scope.tabIndex === 1) {
-        login();
-      }
-    };
-  
-    // Handle modal cancel button
-    $scope.cancel = function () {
-      $modalInstance.dismiss('cancel');
-    };
-  
-    $scope.tabSelect = function(index) {
-      $scope.tabIndex = index;
-    };
-    function login() {
+    $scope.login = function() {
       if ($scope.form.login.$valid) {
         $scope.state.progress = true;
 
@@ -57,6 +41,39 @@ angular.module('login.controllers', [])
         );
       }
     }
+    $scope.signup = function() {
+      if ($scope.form.register.$valid) {
+        $scope.state.progress = true;
+
+        apiService.Signup.post({'username':$scope.form.register.username,'email':$scope.form.register.email, 'pass':$scope.form.register.pass}, function(data) {
+          console.log(data)
+            if(data.passed === true){
+              if(data.log === true) {
+                onLoginSuccess(data);
+              } else {
+                $modalInstance.close();
+                $modal.open({
+                  templateUrl: 'views/partials/emailConfirm.html'
+                });
+              }
+            } else{
+              onLoginError(data);
+            }
+          }, function(res) {
+            onLoginError(res);
+          }
+        );
+      }
+    }
+  
+    // Handle modal cancel button
+    $scope.cancel = function () {
+      $modalInstance.dismiss('cancel');
+    };
+  
+    $scope.tabSelect = function(index) {
+      $scope.tabIndex = index;
+    };
 
     function onLoginSuccess(loginData) {
       // Let's double check to make sure we got a session key in the response.
