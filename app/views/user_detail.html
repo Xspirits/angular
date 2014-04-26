@@ -1,1 +1,70 @@
 <div id="page-title">{{pageTitle}}</div>
+
+
+  <div class="col-md-12 clearfix">
+    <img ng-src="{{user.icon}}" class="img-responsive img-rounded pull-left">
+    <h1>{{user.local.pseudo}} </h1>
+    <div class="text-center">
+      <h4 class="text text-success">
+        Lvl.{{user.level}}
+        <small><a ng-href="#/users/{{user.idCool}}" popover="{{user.local.pseudo}}, also known as {{user.idCool}}" popover-placement="bottom" popover-trigger="mouseenter"> <i class="fa fa-chain"></i> {{user.idCool}}</a></small>
+      </h4>
+     <span class="label label-default">CyF</span>
+     <span ng-show='user.facebook.name.length > 0' class="label label-primary">Facebook</span>
+     <span ng-show='user.google.token'  class="label label-danger">Google</span>
+     <a ng-show='user.twitter.username.length > 0'  href="https://www.twitter.com/{{user.twitter.username}}" title="see {{user.twitter.username}} on twitter" target="_blank" class="label label-info">Twitter</a>
+    </div>
+
+  </div>
+<!--   <div class="col-md-12" ng-switch-on="{{user._id | isFriend:user._id}}">
+    <span ng-switch-when="1" class="btn btn-success btn-block disabled">
+        <span class="glyphicon glyphicon-ok"></span> Friend
+    </span>
+    <button ng-switch-when="2 || 3" popover="You have already either sent or received a friend request to/from {{user.local.pseudo}} " popover-placement="bottom" popover-trigger="mouseenter"  class="btn btn-success btn-block disabled="" " >
+        <span class="glyphicon glyphicon-ok"></span> Pending request
+    </button>
+    <button ng-switch-default popover="Will allow you to send and receive challenge from {{user.local.pseudo}} " popover-placement="bottom" popover-trigger="mouseenter" class="btn btn-primary btn-block" >
+        <span class="glyphicon glyphicon-plus"></span> Add Friend
+    </button>
+  
+  </div> -->
+  <div class="col-md-12">
+    <h4>Plays</h4>  
+
+    <span ng-show="user.games.length > 0" ng-repeat="game in user.games" id="{{game._idGame}}" class="label label-info {{game.type}}">{{game.title}}</span>
+  </div>
+
+  <div class="col-md-12">
+    <h4>Ladders ranking</h4>  
+    <table class="table table-striped text-center">
+      <thead>
+        <tr>
+          <th class="text-center">Yesterday's</th>
+          <th class="text-center">Last Week</th>
+          <th class="text-center">Last Month</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <span ng-switch on="user.dailyRank">
+              <span ng-switch-when="0">Not ranked</span>
+              <span ng-switch-default>{{user.dailyRank}}</span>
+            </span>
+          </td>
+          <td>
+            <span ng-switch on="user.weeklyRank">
+              <span ng-switch-when="0">Not ranked</span>
+              <span ng-switch-default>{{user.weeklyRank}}</span>
+            </span>
+          </td>
+          <td>
+            <span ng-switch on="user.monthlyRank">
+              <span ng-switch-when="0">Not ranked</span>
+              <span ng-switch-default>{{user.monthlyRank}}</span>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -23,6 +23,7 @@ angular.module('caf', [
     'api.services',
     'users.services',
     'ladders.services',
+    'underscore.services',
 
     /* DIRECTIVES */
     'caf.directives',
@@ -35,8 +36,8 @@ angular.module('caf', [
     'caf.animations'
   ])
   .constant('conf', {
-    'epApiDev': 'http://localhost:8080/',
-    'epApi': 'http://www.cyf-app.co/'
+    'epApiDev': 'http://localhost:8080/api/',
+    'epApi': 'http://www.cyf-app.co/api/'
   })
   .config(function($angularCacheFactoryProvider, $routeProvider) {
 

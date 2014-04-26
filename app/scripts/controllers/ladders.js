@@ -7,8 +7,31 @@ angular.module('ladders.controllers', [])
     var callType = $routeParams.type ? $routeParams.type : false;
 
     var ladderCache =  $rootScope.cacheLadders;
-    var ladderGlobal = ladderCache.get('ladderGlobal')
-      , ladderTyped = ladderCache.get('ladder' + callType);
+    var ladderGlobal = ladderCache.get('ladderGlobal', {
+        onExpire: function () {
+          Ladders.query({type: 'score', scope:'global'}, function(leaderboard) {
+            console.log('Cache Expired ');
+            // update cache for the ladder
+            ladderCache.put('ladderGlobal', leaderboard);
+            return leaderboard;
+          }, function(res) {
+              return console.log(res);
+          })
+        }
+      })
+    , ladderTyped = ladderCache.get('ladder' + callType, {
+        onExpire: function () {
+          Ladders.query({type: 'score', scope:callType}, function(leaderboard) {
+            console.log('Cache Expired ');
+            // update cache for the ladder
+
+            ladderCache.put('ladder' + callType, leaderboard);
+            return leaderboard;
+          }, function(res) {
+              return console.log(res);
+          })
+        }
+      });
 
 
     // Scopes
@@ -40,6 +63,7 @@ angular.module('ladders.controllers', [])
 
       if(ladderTyped && ladderTyped.length > 0) {
         console.log('Load from cache');
+        console.log(ladderTyped);
         return setScopeTable(ladderTyped);
 
       } else {

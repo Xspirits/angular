@@ -207,6 +207,32 @@ form.modal-form {
   border-color: #12d4b4;
 }
 
+
+/* --------------------------------- *\
+ * GAMES ASSETS
+\* --------------------------------- */
+
+.color-MOBA {
+  color: rgb(137,67,41);
+}
+.label.MOBA {
+  background: rgb(137,67,41);
+}
+.label.MOBA:hover {
+  background: rgb(182, 92, 59);
+  box-shadow: 0 1px 0px rgb(182, 92, 59);
+}
+.color-Fantasy {
+  color: rgb(28,160,247);
+}
+.label.Fantasy,.badge.Fantasy {
+  background: rgb(28,160,247);
+}
+.label.Fantasy:hover,.badge.Fantasy:hover {
+  background: rgb(87, 185, 250);
+  box-shadow: 0 1px 0px rgb(87, 185, 250);
+}
+
 /* --------------------------------- *\
  * INDEX
 \* --------------------------------- */

@@ -2,15 +2,18 @@
 
 /* Controllers */
 angular.module('users.controllers', ['jmdobry.angular-cache'])
-  .controller('usersCtrl', ['$rootScope','$scope', '$routeParams', '$angularCacheFactory','Users', function($rootScope, $scope, $routeParams, $angularCacheFactory, Users) {
+  .controller('usersCtrl', ['$rootScope', '_', '$scope', '$routeParams', '$angularCacheFactory','Users', function($rootScope, _, $scope, $routeParams, $angularCacheFactory, Users) {
     var userId = $routeParams.userId ? $routeParams.userId : false
       , name;
 
+    console.log($rootScope.currentUser);
     // Is it a profile or the list of our users ?
     if(!userId) {
 
       $scope.pageTitle = 'Challenger list';
       $scope.users = Users.query();
+
+    // User profile details
     } else {
 
       var uCached = $rootScope.cacheUsers;
@@ -19,10 +22,13 @@ angular.module('users.controllers', ['jmdobry.angular-cache'])
       if(!userProfileCached || !userProfileCached.idCool) {
         console.log('load from api');
         return Users.get({userId: userId}, function(userInfos) {
+
             uCached.put('users_'+userInfos.idCool, userInfos);
 
+            // Scope variables
             $scope.pageTitle = userInfos.local.pseudo + '\'s profile';
             $scope.user = userInfos;
+
           }, function(res) {
             console.log(res);
           }
@@ -30,6 +36,8 @@ angular.module('users.controllers', ['jmdobry.angular-cache'])
 
       } else {        
         console.log('load from cache');
+        
+        // Scope variables
         $scope.pageTitle = userProfileCached.local.pseudo + '\'s profile';
         $scope.user = userProfileCached;        
       }

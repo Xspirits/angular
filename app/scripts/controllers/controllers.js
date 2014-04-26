@@ -10,8 +10,8 @@ angular.module('caf.controllers', [])
     $scope.pageTitle = 'My profile';
 
   }])
-  .controller('MenuLeftCtrl', ['$location', '$localStorage', '$modal', '$scope', function($location, $localStorage, $modal, $scope) {
-        $scope.currentUser = $localStorage.profile ? $localStorage.profile : false;
+  .controller('MenuLeftCtrl', ['$location', '$localStorage', '$modal', '$scope', '$rootScope', function($location, $localStorage, $modal, $scope, $rootScope) {
+        $rootScope.currentUser = $localStorage.profile ? $localStorage.profile : false;
         $scope.location = $location;
         $scope.modal = $modal;
   }]);
